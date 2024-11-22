@@ -1,22 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './PasswordForm.scss'
 
 
-const PasswordForm = ({onSavePassword}) => {
+const PasswordForm = ({ onSavePassword, editPassword }) => {
 
   const [title, setTitle] = useState("")
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
-  console.log(title, username, password);
+  useEffect(() => {
+    if (editPassword) {
+      setTitle(editPassword.title)
+      setUsername(editPassword.username)
+      setPassword(editPassword.password)
+    }
+  }, [editPassword])
+
 
   const handleClick = (e) => {
     e.preventDefault()
-    console.log(title, username, password);
-    
-    onSavePassword({
-      title, username, password
-    })
+   
+
+    onSavePassword({ title, username, password, id: editPassword?.id || null })
 
     setTitle("")
     setUsername("")
@@ -39,7 +44,12 @@ const PasswordForm = ({onSavePassword}) => {
         <label htmlFor="password">Enter Password</label>
         <input onChange={(e) => setPassword(e.target.value)} value={password} required id='password' type="text" />
 
-        <button type='submit' onClick={(e) => handleClick(e)}>Save</button>
+        <button type='submit' onClick={(e) => handleClick(e)}>
+          { 
+            editPassword ? "Update Password" : "Save Password"
+          }
+
+        </button>
       </form>
     </div>
   )

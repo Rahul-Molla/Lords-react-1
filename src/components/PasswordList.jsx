@@ -2,34 +2,34 @@ import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import './Passwordlist.scss'
 
-const PasswordList = ({ passwords }) => {
+const PasswordList = ({ passwords, onDelete , onEdit}) => {
     return (
         <div className="list-container">
 
-            <table>
+            <div className="list-main">
 
                 {
                     passwords.map((p) => (
-                        <tr>
+                        <div className="d-main" key={p.id}>
                             <div className="details">
-                                <th>{p.id}</th>
-                                <th>{p.title}</th>
-                                <th>{p.username}</th>
-                                <th>{p.password}</th>
+                                <p>{p.id}</p>
+                                <p>{p.title}</p>
+                                <p>{p.username}</p>
+                                <p>{p.password}</p>
                             </div>
                             <div className="actions">
 
-                                <MdDelete />
-                                <FaEdit />
+                                <MdDelete onClick={()=>onDelete(p.id)}/>
+                                <FaEdit onClick={()=> onEdit(p)}/>
 
                             </div>
-                        </tr>
+                        </div>
                     ))
                 }
 
 
 
-            </table>
+            </div>
 
         </div>
     )
