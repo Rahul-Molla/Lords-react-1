@@ -7,7 +7,7 @@ const App = () => {
 
 const [passwords, setPasswords] = useState([])
 const [editPassword, setEditPassword] = useState(null)
-console.log(passwords);
+
 
 useEffect(()=>{
   const storedPasswords = JSON.parse(localStorage.getItem('passwords')) || []
@@ -19,8 +19,19 @@ useEffect(()=>{
   localStorage.setItem("passwords", JSON.stringify(passwords))
 }, [passwords])
 
-const handleSavePassword = (password) =>{
-  setPasswords([...passwords, {...password, id : Date.now()}])
+const handleSavePassword = (password) =>{ 
+  if(editPassword){
+    setPasswords(passwords.map(p => (p.id === editPassword.id ? password : p ) ))
+    setEditPassword(null)
+  }
+  else{
+    setPasswords([...passwords, {...password, id : Date.now()}])
+  }
+}
+
+
+const handleDeletePassword = (id) =>{
+  setPasswords(passwords.filter((p)=> p.id !== id))
 }
 
 
@@ -30,11 +41,14 @@ const handleSavePassword = (password) =>{
       <div className='container'>
         <PasswordForm 
         onSavePassword = {handleSavePassword}
+        editPassword = {editPassword}
         />
 
         <div>
           <PasswordList
           passwords = { passwords }
+          onDelete = {handleDeletePassword}
+          onEdit = { setEditPassword}
           />
         </div>
       </div>
