@@ -1,6 +1,6 @@
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-import './Passwordlist.scss'
+import './PasswordList.scss'
 
 const PasswordList = ({ passwords, onDelete , onEdit}) => {
     return (
