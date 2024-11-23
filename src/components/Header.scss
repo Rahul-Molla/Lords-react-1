@@ -1,12 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: auto;
+    background-color: #a2a0a0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 .header {
-    background-color: #4a90e2; // Light blue background for the header
-    color: #ffffff;           // White text color
-    font-size: 1.5rem;        // Font size for prominence
-    font-weight: bold;        // Make the text bold
-    text-align: center;       // Center the text
-    padding: 1rem;            // Add some padding for a spacious look
-       // Add rounded corners
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
-    margin: 1rem 0;           // Add some margin to separate it from other elements
-  }
-  
+    background-color: #0adbee; /* Fresh green color */
+    color: #ffffff;           /* White text color */
+    font-size: 2rem;        /* Font size for prominence */
+    font-weight: bold;        /* Make the text bold */
+    text-align: center;       /* Center the text */
+    padding: 0.5rem;            /* Add some padding for a spacious look */
+    //border-radius: 10px;      /* Add rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: 1rem;           /* Add some margin to separate it from other elements */
+    width: 50vw;               /* Limit width to 50% */
+    animation: fadeIn 1s ease-in-out;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.header:hover {
+    background-color: #09f845; /* Slightly darker green on hover */
+    transform: scale(1.05);    /* Slight zoom effect */
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(50, 205, 50, 0.8), rgba(34, 139, 34, 0.8));
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.header:hover::before {
+    opacity: 1;
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 10px rgba(50, 205, 50, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(50, 205, 50, 1); }
+    100% { box-shadow: 0 0 10px rgba(50, 205, 50, 0.5); }
+}
+
+.header:hover {
+    animation: glow 1.5s infinite;
+}
+
+.container {
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

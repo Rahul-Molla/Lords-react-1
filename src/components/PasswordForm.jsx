@@ -35,14 +35,14 @@ const PasswordForm = ({ onSavePassword, editPassword }) => {
     <div className='form-div'>
       <h1>Enter details</h1>
       <form action="">
-        <label htmlFor="website">Enter a website title</label>
-        <input onChange={(e) => setTitle(e.target.value)} value={title} required id='website' type="text" />
+        <label htmlFor="website">Enter a Website Title</label>
+        <input onChange={(e) => setTitle(e.target.value)} value={title} required id='website' type="text" placeholder='Enter Your Title'/>
 
-        <label htmlFor="title">Enter User name</label>
-        <input onChange={(e) => setUsername(e.target.value)} value={username} required id='title' type="text" />
+        <label htmlFor="title">Enter UserName</label>
+        <input onChange={(e) => setUsername(e.target.value)} value={username} required id='title' type="text" placeholder='Enter Your UserName'/>
 
         <label htmlFor="password">Enter Password</label>
-        <input onChange={(e) => setPassword(e.target.value)} value={password} required id='password' type="text" />
+        <input onChange={(e) => setPassword(e.target.value)} value={password} required id='password' type="text" placeholder='Enter Your Password'/>
 
         <button type='submit' onClick={(e) => handleClick(e)}>
           { 
